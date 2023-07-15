@@ -155,7 +155,7 @@ export const posts = [
     likes: new Map([
       [userIds[0], true],
       [userIds[2], true],
-      [userIds[3], true],
+      [userIds[3], true], 
       [userIds[4], true],
     ]),
     comments: [

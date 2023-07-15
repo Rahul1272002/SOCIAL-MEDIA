@@ -1,13 +1,18 @@
-import express from "express"
-import {getUser,getUserFriends,addRemoveFriend} from "../controllers/users.js"
-import { verifyToken } from "../middleware/auth.js"
-const router=express.Router()
+import express from "express";
+import {
+  getUser,
+  getUserFriends,
+  addRemoveFriend,
+} from "../controllers/users.js";
+import { verifyToken } from "../middleware/auth.js";
 
-//Read
-router.get("/:id",verifyToken,getUser)
-router.get("/:id/friends",verifyToken,getUserFriends);
+const router = express.Router();
 
-//update
-router.patch("/:id/:friendId",verifyToken,addRemoveFriend)
+/* READ */
+router.get("/:id", verifyToken, getUser);
+router.get("/:id/friends", verifyToken, getUserFriends);
 
-export default router
+/* UPDATE */
+router.patch("/:id/:friendId", verifyToken, addRemoveFriend);
+
+export default router;

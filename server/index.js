@@ -60,5 +60,3 @@ mongoose.connect(process.env.MONGO_URL,{
     User.insertMany(users)
     Post.insertMany(posts)
 }).catch((err)=>console.log(err)) 
-
-// comments
