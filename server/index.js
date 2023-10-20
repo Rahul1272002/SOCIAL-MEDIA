@@ -46,7 +46,7 @@ const storage=multer.diskStorage({
 const upload=multer(storage)
 //routes files
 app.post("/auth/register",upload.single("picture"),register)
-app.post("/posts",verifyToken,upload.single("picture"),createPost)
+app.post("/posts",verifyToken,upload.single("picture"),createPost) 
 //routes
 app.use("/auth",authRoutes);
 app.use("/users",usersRoutes)
@@ -54,9 +54,14 @@ app.use("/posts",postRoutes)
 //Mongoose
 const PORT=process.env.PORT || 6001
 mongoose.connect(process.env.MONGO_URL,{
-
+ 
 }).then(()=>{
     app.listen(PORT,()=>console.log(`server port:${PORT}`))
-    User.insertMany(users)
-    Post.insertMany(posts)
+    console.log("Connected to MongoDB Atlas");
+    // User.insertMany(users)
+    // Post.insertMany(posts)
 }).catch((err)=>console.log(err)) 
+
+app.get("/", (req, res) => {
+    res.send("Hello, world!");
+  });
